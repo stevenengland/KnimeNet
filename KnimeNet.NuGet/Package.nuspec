@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>KnimeNet</id>
+    <version>0.1.0</version>
+    <title>KnimeNet</title>
+    <authors>Steven England</authors>
+    <owners>england, steven</owners>
+    <description>
+      KnimeNet is a .NET framework targeting KNIME data analytics suite.
+    </description>
+    <releaseNotes>
+    </releaseNotes>
+    <summary>
+      KnimeNet is a .NET framework targeting KNIME data analytics suite.
+    </summary>
+    <language>en-US</language>
+    <projectUrl>https://github.com/stevenengland/KnimeNet/</projectUrl>
+    <iconUrl>https://github.com/stevenengland/KnimeNet/blob/master/assets/logo.png?raw=true</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/stevenengland/KnimeNet/blob/master/LICENSE.md</licenseUrl>
+    <copyright>Copyright  2017</copyright>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="[9.0.1, )" />
+    </dependencies>
+    <references></references>
+    <tags>KNIME</tags>
+  </metadata>
+  <files>
+    <file src="lib\net461\KnimeNet.dll" target="lib\net461" />
+    <file src="lib\net461\KnimeNet.pdb" target="lib\net461" />
+    <file src="lib\net461\KnimeNet.xml" target="lib\net461" />
+    <file src="tools\" target="tools" />
+    <file src="content\" target="content" />
+  </files>
+</package>
