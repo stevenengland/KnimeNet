@@ -77,7 +77,7 @@ SuppressError = true; // Avoids a blocking popup at the end of the execution.
 ```
 Do you have a few examples for us?
 ===
-KnimeNet ships with a [sample project](https://github.com/ericdc1/dapper.SimpleCRUD/blob/master/Dapper.SimpleCRUDTests/Tests.cs) and a basic [test project](https://github.com/ericdc1/dapper.SimpleCRUD/blob/master/Dapper.SimpleCRUDTests/Tests.cs).
+KnimeNet ships with a [sample project](KnimeNet.Example/Program.cs) and a basic [test project](KnimeNet.Test/TestCommandLine.cs).
 You're also invited to visit the [wiki](https://github.com/stevenengland/KnimeNet/wiki).
 
 License
