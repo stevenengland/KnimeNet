@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
 using KnimeNet.CommandLine.Types.Attributes;
 using KnimeNet.CommandLine.Types.Enums;
@@ -265,7 +266,7 @@ namespace KnimeNet.CommandLine.Types
         /// If specified, this option must come at the end of the command line. Even if not specified on the executable command line, the executable will automatically add the relevant arguments (including the class being launched) to the command line passed into Java using the -vmargs argument. Java Main then stores this value in eclipse.vmargs.
         /// </summary>
         [JsonProperty(ArgVmArgs, Required = Required.Default)]
-        [CommandLineArgument(ArgVmArgs, ArgumentSeperator.Space)]
+        [CommandLineArgument(ArgVmArgs, ArgumentSeperator.Space, KeyRepetition.Single)]
         public VmArgument[] VmArguments { get; set; }
 
         #endregion
@@ -322,7 +323,12 @@ namespace KnimeNet.CommandLine.Types
                 return _argumentLine;
 
             var arguments = "";
-            foreach (var info in GetType().GetProperties())
+            var properties = from property in GetType().GetProperties()
+                let claAttribute = property.GetCustomAttributes(typeof(CommandLineArgumentAttribute), false).SingleOrDefault() as CommandLineArgumentAttribute
+                orderby claAttribute.Order
+                select property;
+
+            foreach (var info in properties)
             {
                 var claAttribute = (CommandLineArgumentAttribute) info.GetCustomAttribute(typeof(CommandLineArgumentAttribute));
                 if (claAttribute == null) continue;
@@ -333,9 +339,20 @@ namespace KnimeNet.CommandLine.Types
                 var enumerable = propVal as IEnumerable;
                 if (enumerable != null && !(enumerable is string))
                 {
+                    bool isFirst = true;
                     foreach (var item in enumerable)
                     {
-                        arguments = arguments.CombineArguments(claAttribute.Name, item.ToString(), claAttribute.Seperator.ToArgumentSeperatorString());
+                        if (claAttribute.Repetition == KeyRepetition.Single)
+                        {
+                            if (isFirst)
+                            {
+                                isFirst = false;
+                                arguments = arguments.CombineArguments(claAttribute.Name, string.Empty, claAttribute.Seperator.ToArgumentSeperatorString());
+                            }
+                            arguments = arguments.CombineArguments(item.ToString(), string.Empty, claAttribute.Seperator.ToArgumentSeperatorString());
+                        }
+                        else
+                            arguments = arguments.CombineArguments(claAttribute.Name, item.ToString(), claAttribute.Seperator.ToArgumentSeperatorString());
                     }
                 }
                 else

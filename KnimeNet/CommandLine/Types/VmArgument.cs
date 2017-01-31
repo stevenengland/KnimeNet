@@ -9,7 +9,7 @@ namespace KnimeNet.CommandLine.Types
     public class VmArgument
     {
         /// <summary>
-        /// The key of the argument e.g. eclipse.xyz without '-D' prefix
+        /// The key of the argument e.g. -Dmy.sys.prop
         /// </summary>
         [JsonProperty("key", Required = Required.Always)]
         public string Key { get; set; }
@@ -39,7 +39,7 @@ namespace KnimeNet.CommandLine.Types
         /// </returns>
         public override string ToString()
         {
-            return $"-D{Key}={Value}";
+            return $"{Key}={Value}";
         }
     }
 }

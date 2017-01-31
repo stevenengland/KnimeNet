@@ -2,7 +2,6 @@
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
-using KnimeNet.CommandLine;
 using KnimeNet.CommandLine.Types;
 using KnimeNet.CommandLine.Types.Attributes;
 using KnimeNet.CommandLine.Types.Enums;
@@ -94,7 +93,8 @@ namespace KnimeNet.Test
             args = Regex.Replace(args, _bag.Prefix(nameof(_bag.Credentials)) + _c1 + @"\s?", "");
             args = Regex.Replace(args, _bag.Prefix(nameof(_bag.Credentials)) + _c2 + @"\s?", "");
             args = Regex.Replace(args, _bag.Prefix(nameof(_bag.VmArguments)) + _vm1 + @"\s?", "");
-            args = Regex.Replace(args, _bag.Prefix(nameof(_bag.VmArguments)) + _vm2 + @"\s?", "");
+            /* without repeating the key -> no prefix */
+            args = Regex.Replace(args, _vm2 + @"\s?", "");
             Assert.AreEqual(args, "");
         }
 
@@ -118,8 +118,8 @@ namespace KnimeNet.Test
         [Test, Category("Command Line VmArgument")]
         public void VmArgumentToString()
         {
-            Assert.That(_vm1.ToString() == "-Dkey1=value1");
-            Assert.That(_vm2.ToString() == "-Dkey2=value2");
+            Assert.That(_vm1.ToString() == "key1=value1");
+            Assert.That(_vm2.ToString() == "key2=value2");
         }
     }
 

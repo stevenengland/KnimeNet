@@ -28,6 +28,11 @@ namespace KnimeNet.Test
                 new WorkFlowVariable ("var2", "value2", VariableType.Integer),
                 new WorkFlowVariable ("var3", "value3", VariableType.String)
             },
+            VmArguments = new []
+            {
+              new VmArgument("key1", "value1"),
+              new VmArgument("key2", "value2"),   
+            },
             Arch = "x86",
             Clean = false,
             Data = "pathtodata",
