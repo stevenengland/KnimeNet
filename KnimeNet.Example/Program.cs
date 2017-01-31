@@ -22,10 +22,10 @@ namespace KnimeNet.Example
             Console.WriteLine("Exit Code: " + exitStatus.ExitCode);
             exitStatus = Task.Run(async () => await SucceedingExecutionWithDifferentTextWriter().ConfigureAwait(false)).Result;
             Console.WriteLine("Exit Code: " + exitStatus.ExitCode);
-            //exitStatus = Task.Run(async () => await FailingExecutionAfterTimeout().ConfigureAwait(false)).Result;
-            //Console.WriteLine("Exit Code: " + exitStatus.ExitCode);
-            //exitStatus = Task.Run(async () => await FailingExecutionAfterCancel().ConfigureAwait(false)).Result;
-            //Console.WriteLine("Exit Code: " + exitStatus.ExitCode);
+            exitStatus = Task.Run(async () => await FailingExecutionAfterTimeout().ConfigureAwait(false)).Result;
+            Console.WriteLine("Exit Code: " + exitStatus.ExitCode);
+            exitStatus = Task.Run(async () => await FailingExecutionAfterCancel().ConfigureAwait(false)).Result;
+            Console.WriteLine("Exit Code: " + exitStatus.ExitCode);
             Console.ReadLine();
         }
 

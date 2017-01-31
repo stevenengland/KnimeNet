@@ -2,6 +2,7 @@
 personal_files/
 gitignore_*
 doxygen/
+KnimeNet.NuGet.Test/
 
 
 ## Ignore Visual Studio temporary files, build results, and

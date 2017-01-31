@@ -2,17 +2,19 @@
 <package >
   <metadata>
     <id>KnimeNet</id>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <title>KnimeNet</title>
     <authors>Steven England</authors>
     <owners>england, steven</owners>
     <description>
-      KnimeNet is a .NET framework targeting KNIME data analytics suite.
+      KnimeNet is a framework that connects .NET with the KNIME data analytics platform.
     </description>
     <releaseNotes>
+      - 0.1.1 
+        - Bug fixed VM argument generation
     </releaseNotes>
     <summary>
-      KnimeNet is a .NET framework targeting KNIME data analytics suite.
+      KnimeNet is a framework that connects .NET with the KNIME data analytics platform.
     </summary>
     <language>en-US</language>
     <projectUrl>https://github.com/stevenengland/KnimeNet/</projectUrl>

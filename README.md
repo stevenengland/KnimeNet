@@ -75,6 +75,7 @@ NoExit = false; // Avoids that KNIME does not exit after execution.
 ConsoleLog = false; // Avoids a second command line window during the execution.
 SuppressError = true; // Avoids a blocking popup at the end of the execution.
 ```
+
 Do you have a few examples for us?
 ===
 KnimeNet ships with a [sample project](KnimeNet.Example/Program.cs) and a basic [test project](KnimeNet.Test/TestCommandLine.cs).
@@ -84,3 +85,6 @@ License
 ===
 KnimeNet is released under MIT license. 
 See [LICENSE.md](LICENSE.md) for details.
+
+-----
+Tested on Windows 10 and Ubuntu 16.10 (Mono 2.0)
